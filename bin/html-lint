@@ -1,19 +1,28 @@
+#!/usr/bin/env node
+
 const async = require('async')
 const formatter = require('../lib/formatter')
 const fs = require('fs')
 const parser = require('../lib/parser')
 const linter = require('../lib/linter')
 
-if (!process.argv[2]) process.exit(1)
+if (!process.argv[2]) {
+  console.log('Usage:\thtml-lint <files>')
+  process.exit(1)
+}
+
 const fileNames = process.argv.slice(2, process.argv.length)
 
 async.map(fileNames, (fileName, cb) => {
   fs.readFile(fileName, 'UTF-8', (ignoredErr, file) => {
     const html = parser.parse(file)
-    const messages = linter.lint(html, fileName, file)
+    const results = linter.lint(html)
 
-    return cb(null, messages)
+    return cb(null, {
+      fileName: fileName,
+      results: results
+    })
   })
 }, (ignoredErr, messages) => {
-  formatter.format(messages)
+  console.log(formatter.format(messages))
 })
