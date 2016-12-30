@@ -4,7 +4,6 @@ module.exports = {
     if (node.attribs.href) return
 
     return {
-      rule: 'href',
       message: 'Missing href on <a> tag',
       node
     }

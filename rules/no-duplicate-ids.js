@@ -11,7 +11,6 @@ module.exports = {
     if (matching.length === 1) return
 
     return {
-      rule: 'no-duplicate-ids',
       message: 'id should not be duplicated across elements',
       node
     }

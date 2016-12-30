@@ -12,7 +12,6 @@ module.exports = {
     if (matching.length) return
 
     return {
-      rule: 'label-matching-for-id',
       message: '<label> "for" attribute should match the "id" of an input',
       node
     }

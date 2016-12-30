@@ -15,7 +15,6 @@ module.exports = {
     if (!duplicateFound) return
 
     return {
-      rule: 'no-duplicate-classes',
       message: 'No duplicate classes allowed',
       node
     }

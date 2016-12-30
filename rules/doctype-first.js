@@ -14,7 +14,6 @@ module.exports = {
     if (node.prev !== null || node.parent !== null) return
 
     return {
-      rule: 'doctype-first',
       message: '<doctype> tag should be first',
       node
     }
